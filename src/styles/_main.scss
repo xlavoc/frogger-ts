@@ -1,0 +1,12 @@
+.game-frogger {
+  margin: auto;
+  position: relative;
+
+  &-player {
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    background-color: pink;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

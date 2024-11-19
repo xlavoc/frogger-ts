@@ -2,11 +2,37 @@
   margin: auto;
   position: relative;
 
-  &-player {
-    aspect-ratio: 1 / 1;
+  &-actor {
     position: absolute;
     background-color: pink;
-    left: 50%;
-    transform: translateX(-50%);
+    //left: 50%;
+    //transform: translateX(-50%);
+  }
+
+  &-player {
+    position: absolute;
+    background-color: yellow;
+    aspect-ratio: 1/1;
+    background-image: url(../assets/sprites.png);
+    background-position: -10px -10px;
+    background-size: 100%;
+  }
+}
+.frog {
+  width: 160px;
+  height: 160px;
+  background-color: plum;
+  overflow: hidden;
+  position: relative;
+  
+  &-sprite {
+    width: 1600px;
+    image-rendering: pixelated;
+    margin-left: -10px;
+    position: absolute;
+
+    &.jump {
+      left: -190px;
+    }
   }
 }

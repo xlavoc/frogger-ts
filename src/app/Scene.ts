@@ -1,5 +1,7 @@
+import { Actor } from "./Actor";
 import { Area } from "./Area";
 import { Utils } from "./Utils";
+import { cssRootId } from "./consts/cssRootId";
 import { type Area as AreaType } from "./types/area.type";
 
 export class Scene {
@@ -24,5 +26,12 @@ export class Scene {
     this.areas.map((area) => {
       new Area(this.appNode, area.heightPercent, area.bgcolor, area.name).appendArea();
     })
+    this.#addActors();
+  }
+
+  #addActors(): void {
+    new Actor(64, 64, 200, 40, 'truck', this.appNode).initActor();
+    console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
+    
   }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="truck" viewBox="0 0 27 10" fill="none">
+      <path d="M7 1H27V9H7V1Z" fill="#C3C3D9"/>
+      <path d="M1 1H6V9H1V1Z" fill="#C3C3D9"/>
+      <path d="M1 1H2V2H1V1Z" fill="#E00000"/>
+      <path d="M1 8H2V9H1V8Z" fill="#E00000"/>
+      <path d="M0 2H1V8H0V2Z" fill="#E00000"/>
+      <path d="M6 3H7V7H6V3Z" fill="#E00000"/>
+      <path d="M8 0H12V1H8V0Z" fill="#1DC300"/>
+      <path d="M3 0H6V1H3V0Z" fill="#1DC300"/>
+      <path d="M8 9H11V10H8V9Z" fill="#1DC300"/>
+      <path d="M23 9H26V10H23V9Z" fill="#1DC300"/>
+      <path d="M23 0H26V1H23V0Z" fill="#1DC300"/>
+      <path d="M3 9H6V10H3V9Z" fill="#1DC300"/>
+    </symbol>
+  </defs>
+</svg>

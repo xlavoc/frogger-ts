@@ -6,7 +6,7 @@ export class Player extends Scene {
 
   createPlayer(): void {
     const div = document.createElement('div');
-    const size = (this.height - this.areas.filter((el) => el.name === 'top')[0].heightPercent / 100 * this.height * 2) / 10;
+    const size = this.getLaneHeight();
 
     div.classList.add(`${cssRootId}-player`);
     div.style.height = Utils.convertToUnit(size, 'rem');

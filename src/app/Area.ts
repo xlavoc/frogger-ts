@@ -17,8 +17,9 @@ export class Area {
 
   appendArea(): void {
     const area = document.createElement('area');
-    area.style.height = Utils.convertToUnit(this.height, '%');
+    area.style.height = Utils.convertToUnit(this.height, 'rem');
     area.style.backgroundColor = this.bgcolor;
+    area.style.position = 'relative';
     area.classList.add(`${cssRootId}-${this.name}`);
     this.parent.appendChild(area);
   }

@@ -7,35 +7,35 @@ export class Actor {
   w: number;
   h: number;
   name: string;
+  spriteX: number;
+  spriteY: number;
   appNode: HTMLDivElement;
 
-  constructor(x: number, y: number, w: number, h: number, name: string, appNode: HTMLDivElement) {
+  constructor(name: string, x: number, y: number, w: number, h: number, spriteX: number, spriteY: number,  appNode: HTMLDivElement) {
+    this.name = name;
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.name = name;
+    this.spriteX = spriteX;
+    this.spriteY = spriteY;
     this.appNode = appNode;
   }
 
   initActor(): void {
-    // const div = document.createElement('div');
-    // div.style.width = Utils.convertToUnit(this.w, 'rem');
-    // div.style.height = Utils.convertToUnit(this.h, 'rem');
-    // div.style.left = Utils.convertToUnit(this.x), 'rem';
-    // div.style.top = Utils.convertToUnit(this.y, 'rem');
-    // div.classList.add(...[`${cssRootId}-${this.name}`, `${cssRootId}-actor`]);
-    // this.appNode.appendChild(div);
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.style.width = Utils.convertToUnit(this.w, 'rem');
-    svg.style.height = Utils.convertToUnit(this.h, 'rem');
-    svg.style.left = Utils.convertToUnit(this.x), 'rem';
-    svg.style.top = Utils.convertToUnit(this.y, 'rem');
-    svg.classList.add(...[`${cssRootId}-${this.name}`, `${cssRootId}-actor`]);
+    const container = document.createElement('div');
+    container.classList.add(`${cssRootId}-actor`);
+    container.style.width = Utils.convertToUnit(this.w, 'rem');
+    container.style.height = Utils.convertToUnit(this.h, 'rem');
+    container.style.left = Utils.convertToUnit(this.x, 'rem');
+    container.style.top = Utils.convertToUnit(this.y, 'rem');
 
-    const symbol = document.createElementNS('http://www.w3.org/2000/svg','use');
-    symbol.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `src/assets/symbols.svg#${this.name}`);
-    svg.appendChild(symbol);
-    document.body.appendChild(svg);
+    const sprite = document.createElement('img');
+    sprite.classList.add(`${cssRootId}-actor-sprite`);
+    sprite.style.width = Utils.convertToUnit(this.h * 6, 'rem');
+    sprite.style.left = Utils.convertToUnit(-this.spriteX * this.h, 'rem');
+    sprite.style.top = Utils.convertToUnit(-this.spriteY * this.h, 'rem');
+    container.appendChild(sprite);
+    this.appNode.appendChild(container);
   }
 }

@@ -1,1 +1,1 @@
-export const cssRootId = 'game-frogger';
+export const cssRootId = 'frggr';

@@ -37,5 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
   appNode.classList.add(cssRootId);
   document.body.appendChild(appNode);
 
-  new Game(appNode).init();
+  new Game(480, appNode).init();
 });

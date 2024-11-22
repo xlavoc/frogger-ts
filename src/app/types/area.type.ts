@@ -2,6 +2,6 @@ import { Hex } from "./hex.type";
 
 export type Area = {
   name: string;
-  heightPercent: number;
+  lanes: number;
   bgcolor: Hex;
 }

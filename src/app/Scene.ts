@@ -2,50 +2,57 @@ import { Actor } from "./Actor";
 import { Area } from "./Area";
 import { Utils } from "./Utils";
 import { cssRootId } from "./consts/cssRootId";
-import { type Area as AreaType } from "./types/area.type";
+import { AREAS } from "./consts/gameAreas";
 
 export class Scene {
-  RATIO: number = 7 / 5;
-  // UNIT: number = 16;
-  appNode: HTMLDivElement;
   boardHeight: number;
-  areas: AreaType[] = [
-    { name: 'top', lanes: 3,  bgcolor: '#03350F'},
-    { name: 'river', lanes: 5,  bgcolor: '#382DB5'},
-    { name: 'sidewalk', lanes: 1,  bgcolor: '#4A1705'},
-    { name: 'road', lanes: 4,  bgcolor: '#000'},
-    { name: 'bottom', lanes: 2,  bgcolor: '#03350F'},
-  ];
+  appNode: HTMLDivElement;
+  static RATIO: number = 7 / 5;
+  static areas = AREAS;
 
-  constructor (boardHeight: number, appNode: HTMLDivElement) {
-    this.boardHeight = boardHeight;
+  constructor(boardHeight: number, appNode: HTMLDivElement) {
     this.appNode = appNode;
+    this.boardHeight = boardHeight;
+  }
+  
+  static getLanesTotal(): number {
+    return Scene.areas.reduce((p, c) => p + c.lanes, 0);
   }
 
   getBoardWidth(): number {
-    return this.boardHeight * this.RATIO;
-  }
-
-  getLanesTotal(): number {
-    return this.areas.reduce((p,c) => p + c.lanes, 0);
+    return this.boardHeight * Scene.RATIO;
   }
 
   getLaneHeight(): number {
-    return this.boardHeight / this.getLanesTotal();
+    return this.boardHeight / Scene.getLanesTotal();
   }
 
   createScene(): void {
     this.appNode.style.width = Utils.convertToUnit(this.getBoardWidth(), 'rem');
     this.appNode.style.height = Utils.convertToUnit(this.boardHeight, 'rem');
-    this.areas.map((area) => {
-      new Area(this.appNode, area.lanes * this.getLaneHeight(), area.bgcolor, area.name).appendArea();
-    })
-    this.#addActors();
+    this.#addAreas();
+    this.#addCars();
   }
 
-  #addActors(): void {
-    new Actor('car1', 100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!).initActor();
+  #addAreas(): void {
+    Scene.areas.map((area) => {
+      new Area(this.appNode, area.lanes * this.getLaneHeight(), area.bgcolor, area.name).appendArea();
+    })
+  }
+
+  #addCars(): void {
+    const road: HTMLDivElement = document.querySelector(`.${cssRootId}-road`)!;
+    // const makeLane = (carsAmount: number, distance: number, roadLane: number, spritesRow: number)  => {
+    //   return [...Array(carsAmount).keys()].map((num) => {
+    //     new Actor(num * this.getBoardWidth() / distance, roadLane, this.getLaneHeight(), this.getLaneHeight(), num, spritesRow, road);
+    //   });
+    // };
+    // makeLane(3, 3.5, this.getLaneHeight(),2);
+    [...Array(4).keys()].map((num) => {
+      new Actor(num * this.getBoardWidth() / 3.2, 0, this.getLaneHeight(), this.getLaneHeight(), num, 1, road, 'car').init();
+    })
+    new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
     console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
-    
+
   }
 }

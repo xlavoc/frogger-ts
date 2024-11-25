@@ -25,16 +25,26 @@
     &.left {
       transform: rotate(-0.25turn);
     }
+    & > img.jump {
+      animation: sprite-x2 200ms steps(2) 1;
+    }
   }
 
   &-car {
     animation: linear infinite;
     animation-name: move-left;
     animation-duration: 5s;
-    @keyframes move-left {
-      to {
-        transform: translate3d(-100%, 0, 0);
-      }
+  }
+
+  @keyframes sprite-x2 {
+    to {
+      transform: translate3d(-33.3%, 0, 0)
+    }
+  }
+
+  @keyframes move-left {
+    to {
+      transform: translate3d(-100%, 0, 0);
     }
   }
 }

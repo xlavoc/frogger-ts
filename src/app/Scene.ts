@@ -48,11 +48,13 @@ export class Scene {
     //   });
     // };
     // makeLane(3, 3.5, this.getLaneHeight(),2);
-    [...Array(4).keys()].map((num) => {
-      new Actor(num * this.getBoardWidth() / 3.2, 0, this.getLaneHeight(), this.getLaneHeight(), num, 1, road, 'car').init();
-    })
-    new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
-    console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
+
+
+    // [...Array(4).keys()].map((num) => {
+    //   new Actor(num * this.getBoardWidth() / 3.2, 0, this.getLaneHeight(), this.getLaneHeight(), num, 1, road, 'car').init();
+    // })
+    // new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
+    // console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
 
   }
 }

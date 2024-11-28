@@ -1,6 +1,7 @@
 .frggr {
   margin: auto;
   position: relative;
+  // overflow: hidden;
 
   &-actor {
     position: absolute;
@@ -30,21 +31,35 @@
     }
   }
 
-  &-car {
+  &-lane {
     animation: linear infinite;
+    animation-duration: 4s;
     animation-name: move-left;
-    animation-duration: 5s;
+
+    &.to-right {
+      animation-name: move-right;
+
+      & > div {
+        transform: rotate(0.5turn);
+      }
+    }
   }
 
   @keyframes sprite-x2 {
     to {
-      transform: translate3d(-33.3%, 0, 0)
+      transform: translate3d(-20%, 0, 0);
     }
   }
 
   @keyframes move-left {
     to {
       transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @keyframes move-right {
+    to {
+      transform: translate3d(100%, 0, 0);
     }
   }
 }

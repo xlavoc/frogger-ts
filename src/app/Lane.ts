@@ -1,23 +1,64 @@
 import { Actor } from "./Actor";
+import { Scene } from "./Scene";
+import { Utils } from "./Utils";
+import { cssRootId } from "./consts/cssRootId";
+
+type Speed = "slow" | "medium" | "fast";
+type DirectionTo = "left" | "right";
 
 export class Lane {
-  actorAmount: number;
-  // distance: number[]; // distance from actor or left egde in units (1 unit = player width)
-  coordY: number; // area Y whole lane coordinates
-  area: HTMLAreaElement;
+	actorAmount: number;
+	area: HTMLAreaElement;
+	offsetFromLeftEdge: number;
+	directionTo: DirectionTo;
+	speed: Speed;
+  height: number;
+	#boardWidth = Utils.nodeWidth(cssRootId);
+	#boardHeight = Utils.nodeHeight(cssRootId);
+	#playerSize = this.#boardHeight / Scene.getLanesTotal();
 
-  constructor (actorAmount: number, /*distance: number[],*/ coordY: number, area: HTMLAreaElement) {
-    this.actorAmount = actorAmount;
-    //this.distance = distance;
-    this.coordY = coordY;
-    this.area = area;
-  }
+	constructor(
+		actorAmount: number,
+    area: HTMLAreaElement,
+		offsetFromLeftEdge?: number,
+		directionTo?: DirectionTo,
+		speed?: Speed,
+    height?: number,
+	) {
+		this.actorAmount = actorAmount;
+		this.area = area;
+		this.offsetFromLeftEdge = offsetFromLeftEdge || 0;
+		this.directionTo = directionTo || "left";
+		this.speed = speed || "slow";
+    this.height = height || this.#playerSize;
+	}
 
-  init(): void {
-    const row: HTMLParagraphElement = document.createElement('p');
+	init(): void {
+		const row: HTMLDivElement = document.createElement("div");
+		const distance =
+			(this.#boardWidth -
+				this.#playerSize -
+				this.offsetFromLeftEdge) /
+			(this.actorAmount - 1);
 
-    for (let i = 0; i < this.actorAmount; i++) {
-      //const actor = new Actor(0, 0)
+		for (let i = 0; i < this.actorAmount; i++) {
+			const actor = new Actor(
+				this.offsetFromLeftEdge + distance * i,
+				0,
+				this.#playerSize,
+				this.#playerSize,
+				i,
+				1,
+				row,
+			);
+			actor.init();
+		}
+
+    row.style.height = Utils.convertToUnit(this.height, 'rem');
+    row.classList.add(`${cssRootId}-lane`);
+    if (this.directionTo === 'right') {
+      row.classList.add('to-right');
     }
-  }
+		this.area.appendChild(row);
+	}
 }

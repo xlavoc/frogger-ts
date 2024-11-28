@@ -44,7 +44,7 @@ export class Actor {
 
 		const sprite = document.createElement("img");
 		sprite.classList.add(`${cssRootId}-actor-sprite`);
-		sprite.style.width = Utils.convertToUnit(this.h * 6, "rem");
+		sprite.style.width = Utils.convertToUnit(this.h * 10, "rem");
 		sprite.style.left = Utils.convertToUnit(-this.spriteX * this.h, "rem");
 		sprite.style.top = Utils.convertToUnit(-this.spriteY * this.h, "rem");
 		container.appendChild(sprite);

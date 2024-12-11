@@ -1,7 +1,7 @@
 .frggr {
   margin: auto;
   position: relative;
-  // overflow: hidden;
+  //overflow: hidden;
 
   &-actor {
     position: absolute;
@@ -58,8 +58,8 @@
   }
 
   @keyframes move-right {
-    to {
-      transform: translate3d(100%, 0, 0);
+    from {
+      transform: translate3d(-100%, 0, 0);
     }
   }
 }

@@ -36,16 +36,15 @@ export class Lane {
   init(): void {
     const row: HTMLDivElement = document.createElement('div');
     const distance =
-      (this.#boardWidth - this.#playerSize - this.offsetFromLeftEdge) /
-      (this.actorAmount - 1);
+      (this.#boardWidth / this.actorAmount);
 
-    for (let i = 0; i < this.actorAmount*2; i++) {
+    for (let i = 0; i < this.actorAmount * 2; i++) {
       const actor = new Actor(
-        this.offsetFromLeftEdge + distance * i - this.#playerSize,
+        this.offsetFromLeftEdge + distance * i,
         0,
         this.#playerSize,
         this.#playerSize,
-        0,
+        1,
         1,
         row,
       );

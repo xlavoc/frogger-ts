@@ -61,6 +61,8 @@ export class Scene {
     // new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
     // console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
 
-    new Lane(4, road, 0).init();
+    new Lane(4, road, 0, 'left').init();
+    new Lane(3, road, 0, 'right').init();
+    new Lane(4, road, 100, 'left').init();
   }
 }

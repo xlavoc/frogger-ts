@@ -1,4 +1,4 @@
-import './styles/style.scss'
+import './styles/style.scss';
 import { Game } from './app/Game';
 import { cssRootId } from './app/consts/cssRootId';
 

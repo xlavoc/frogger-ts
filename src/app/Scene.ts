@@ -1,9 +1,9 @@
-import { Actor } from "./Actor";
-import { Area } from "./Area";
-import { Lane } from "./Lane";
-import { Utils } from "./Utils";
-import { cssRootId } from "./consts/cssRootId";
-import { AREAS } from "./consts/gameAreas";
+import { Actor } from './Actor';
+import { Area } from './Area';
+import { Lane } from './Lane';
+import { Utils } from './Utils';
+import { cssRootId } from './consts/cssRootId';
+import { AREAS } from './consts/gameAreas';
 
 export class Scene {
   boardHeight: number;
@@ -15,7 +15,7 @@ export class Scene {
     this.appNode = appNode;
     this.boardHeight = boardHeight;
   }
-  
+
   static getLanesTotal(): number {
     return Scene.areas.reduce((p, c) => p + c.lanes, 0);
   }
@@ -37,8 +37,13 @@ export class Scene {
 
   #addAreas(): void {
     Scene.areas.map((area) => {
-      new Area(this.appNode, area.lanes * this.getLaneHeight(), area.bgcolor, area.name).appendArea();
-    })
+      new Area(
+        this.appNode,
+        area.lanes * this.getLaneHeight(),
+        area.bgcolor,
+        area.name,
+      ).appendArea();
+    });
   }
 
   #addCars(): void {
@@ -50,13 +55,12 @@ export class Scene {
     // };
     // makeLane(3, 3.5, this.getLaneHeight(),2);
 
-
     // [...Array(4).keys()].map((num) => {
     //   new Actor(num * this.getBoardWidth() / 3.2, 0, this.getLaneHeight(), this.getLaneHeight(), num, 1, road, 'car').init();
     // })
     // new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
     // console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
 
-    new Lane(4, road, this.getLaneHeight() * 2, "right").init();
+    new Lane(4, road, 0).init();
   }
 }

@@ -1,9 +1,11 @@
 export class Utils {
-  static REM: number = + window.getComputedStyle(document.documentElement).fontSize.slice(0, -2) || 16;
+  static REM: number =
+    +window.getComputedStyle(document.documentElement).fontSize.slice(0, -2) ||
+    16;
 
   static convertToUnit(value: number, unit?: 'px' | 'rem' | '%'): string {
     if (unit === 'rem') {
-      return value / Utils.REM + 'rem'
+      return value / Utils.REM + 'rem';
     }
     return value + (unit || '');
   }
@@ -16,11 +18,12 @@ export class Utils {
   }
 
   static nodeHeight(cssClass: string): number {
-    return document.querySelector(`.${cssClass}`)!.getBoundingClientRect().height;
+    return document.querySelector(`.${cssClass}`)!.getBoundingClientRect()
+      .height;
   }
 
   static nodeWidth(cssClass: string): number {
-    return document.querySelector(`.${cssClass}`)!.getBoundingClientRect().width;
+    return document.querySelector(`.${cssClass}`)!.getBoundingClientRect()
+      .width;
   }
-
 }

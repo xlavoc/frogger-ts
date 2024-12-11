@@ -1,6 +1,6 @@
-import { Utils } from "./Utils";
-import { Hex } from "./types/hex.type";
-import { cssRootId } from "./consts/cssRootId";
+import { Utils } from './Utils';
+import { Hex } from './types/hex.type';
+import { cssRootId } from './consts/cssRootId';
 
 export class Area {
   height: number;
@@ -8,7 +8,12 @@ export class Area {
   parent: HTMLDivElement;
   name: string;
 
-  constructor (parentNode: HTMLDivElement, height: number, backgroundColor: Hex, name: string) {
+  constructor(
+    parentNode: HTMLDivElement,
+    height: number,
+    backgroundColor: Hex,
+    name: string,
+  ) {
     this.parent = parentNode;
     this.height = height;
     this.bgcolor = backgroundColor;

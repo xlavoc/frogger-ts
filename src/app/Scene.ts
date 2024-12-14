@@ -1,4 +1,3 @@
-import { Actor } from './Actor';
 import { Area } from './Area';
 import { Lane } from './Lane';
 import { Utils } from './Utils';
@@ -48,21 +47,9 @@ export class Scene {
 
   #addCars(): void {
     const road: HTMLAreaElement = document.querySelector(`.${cssRootId}-road`)!;
-    // const makeLane = (carsAmount: number, distance: number, roadLane: number, spritesRow: number)  => {
-    //   return [...Array(carsAmount).keys()].map((num) => {
-    //     new Actor(num * this.getBoardWidth() / distance, roadLane, this.getLaneHeight(), this.getLaneHeight(), num, spritesRow, road);
-    //   });
-    // };
-    // makeLane(3, 3.5, this.getLaneHeight(),2);
 
-    // [...Array(4).keys()].map((num) => {
-    //   new Actor(num * this.getBoardWidth() / 3.2, 0, this.getLaneHeight(), this.getLaneHeight(), num, 1, road, 'car').init();
-    // })
-    // new Actor(100, this.getLaneHeight() * 2, this.getLaneHeight(), this.getLaneHeight(), 1, 1, document.querySelector(`.${cssRootId}-road`)!, 'car').init();
-    // console.log(document.querySelector(`.${cssRootId}-top`)?.getBoundingClientRect());
-
-    new Lane(4, road, 0, 'left').init();
+    new Lane(3, road, 0, 'left').init();
     new Lane(3, road, 0, 'right').init();
-    new Lane(4, road, 100, 'left').init();
+    new Lane(2, road, 0, 'left').init();
   }
 }

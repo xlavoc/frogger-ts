@@ -1,7 +1,7 @@
 .frggr {
   margin: auto;
   position: relative;
-  //overflow: hidden;
+  overflow: hidden;
 
   &-actor {
     position: absolute;
@@ -43,6 +43,9 @@
         transform: rotate(0.5turn);
       }
     }
+  }
+  & .collision {
+    border: 1px solid yellow;
   }
 
   @keyframes sprite-x2 {

@@ -10,6 +10,7 @@ export class Actor {
   spriteY: number;
   parentNode: HTMLDivElement;
   name?: string;
+  isColliding?: boolean;
 
   constructor(
     x: number,
@@ -20,6 +21,7 @@ export class Actor {
     spriteY: number,
     parentNode: HTMLDivElement,
     name?: string,
+    isColliding?: boolean,
   ) {
     this.x = x;
     this.y = y;
@@ -29,6 +31,7 @@ export class Actor {
     this.spriteY = spriteY;
     this.parentNode = parentNode;
     this.name = name;
+    this.isColliding = isColliding
   }
 
   init(): void {
@@ -40,6 +43,9 @@ export class Actor {
     container.style.top = Utils.convertToUnit(this.y, 'rem');
     if (this.name) {
       container.classList.add(`${cssRootId}-${this.name}`);
+    }
+    if (this.isColliding) {
+      container.classList.add(`${cssRootId}-actor-colliding`)
     }
 
     const sprite = document.createElement('img');

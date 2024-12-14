@@ -35,8 +35,7 @@ export class Lane {
 
   init(): void {
     const row: HTMLDivElement = document.createElement('div');
-    const distance =
-      (this.#boardWidth / this.actorAmount);
+    const distance = this.#boardWidth / this.actorAmount;
 
     for (let i = 0; i < this.actorAmount * 2; i++) {
       const actor = new Actor(
@@ -47,6 +46,8 @@ export class Lane {
         1,
         1,
         row,
+        undefined,
+        true,
       );
       actor.init();
     }
